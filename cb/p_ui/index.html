@@ -1,0 +1,890 @@
+<html lang="en">
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Angular Material style sheet -->
+  <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.css">
+</head>
+
+<body ng-app="BlankApp" ng-cloak>
+  <!--
+    Your HTML content here
+  -->
+
+  <!-- Angular Material requires Angular.js Libraries -->
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-animate.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-aria.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-messages.min.js"></script>
+  <style>
+    .ac-container {
+      width: 100%;
+    }
+
+    md-card-content {
+      min-height: 600px;
+    }
+
+    .ac-container label {
+      padding: 0px 12px;
+      position: relative;
+      z-index: 14;
+      display: block;
+      height: 27px;
+      cursor: pointer;
+      color: #777;
+      text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.8);
+      line-height: 26px;
+      font-size: 14px;
+      background: linear-gradient(top, #ffffff 1%, #eaeaea 100%);
+      box-shadow: 0 0 0 1px rgba(155, 155, 155, 0.3);
+      font-weight: 600;
+    }
+
+    .ac-container label:hover {
+      background: #fff;
+    }
+
+    .ac-container input:checked+label,
+    .ac-container input:checked+label:hover {
+      background: #f8f8f8;
+      color: #3d7489;
+    }
+
+    .ac-container label:hover:after,
+    .ac-container input:checked+label:hover:after {
+      content: '';
+      position: absolute;
+      width: 24px;
+      height: 24px;
+      right: 13px;
+      top: 7px;
+      background: transparent url(../images/arrow_down.png) no-repeat center center;
+    }
+
+    .ac-container input:checked+label:hover:after {
+      background-image: url(../images/arrow_up.png);
+    }
+
+    .ac-container input {
+      display: none;
+    }
+
+    .ac-container article {
+      background: rgba(255, 255, 255, 0.5);
+      margin-top: -1px;
+      overflow: hidden;
+      height: 0px;
+      position: relative;
+      z-index: 10;
+      transition: height 0.3s ease-in-out,
+      box-shadow 0.6s linear;
+      margin-bottom: 8px;
+    }
+
+    .ac-container input:checked~article {
+      transition: height 0.5s ease-in-out,
+      box-shadow 0.1s linear;
+      box-shadow: 0px 0px 0px 1px rgba(155, 155, 155, 0.3);
+    }
+
+    .ac-container article p {
+      font-style: italic;
+      color: #777;
+      line-height: 23px;
+      font-size: 14px;
+      padding: 20px;
+      text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.8);
+    }
+
+    .ac-container input:checked~article.ac-small {
+      height: 650px;
+    }
+
+    .ac-container input:checked~article.ac-medium {
+      height: 650px;
+    }
+
+    .ac-container input:checked~article.ac-large {
+      height: 650px;
+    }
+
+    .left_title,
+    .right_body {
+      float: left;
+    }
+
+    .right_body {
+      width: 100%;
+    }
+
+    .main_box {
+      position: relative;
+      margin: 8px;
+      min-height: 160px;
+    }
+
+    .text_title {
+      -webkit-transform: rotate(180deg);
+      -moz-transform: rotate(180deg);
+      -ms-transform: rotate(180deg);
+      -o-transform: rotate(180deg);
+      transform: rotate(180deg);
+      margin-top: 10px;
+    }
+
+    .left_title {
+      font-size: 14px;
+      padding: 2px 10px;
+      color: #000;
+      min-width: 110px;
+      position: relative;
+      line-height: 0px;
+      text-align: center;
+      text-transform: uppercase;
+      letter-spacing: 0px;
+      top: 25px;
+      left: 25px;
+      -webkit-transform: rotate(270deg);
+      -moz-transform: rotate(270deg);
+      -ms-transform: rotate(270deg);
+      -o-transform: rotate(270deg);
+      transform: rotate(90deg);
+      -webkit-transform-origin: 0 0;
+      -moz-transform-origin: 0 0;
+      -ms-transform-origin: 0 0;
+      -o-transform-origin: 0 0;
+      transform-origin: 0 0;
+      background-color: #ffa70f;
+      color: #fff;
+      border-radius: 0px 0px 8px 8px;
+      height: 21px;
+    }
+
+    .contain_box {
+      margin-left: 25px;
+      border: 1px solid #e4e9ee;
+      min-height: 130px;
+      padding: 15px;
+      box-shadow: 1px 0px 4px 0px rgba(0, 0, 0, 0.1);
+    }
+
+    .table_header {
+      color: #454545;
+      border: 1px solid #e4e9ee;
+      border-bottom: 0px;
+      background-color: rgba(232, 237, 242, 0.30);
+      box-shadow: 0px 3px 5px 0px #eee;
+    }
+
+    .table_header div,
+    .table_body div {
+      border-right: 1px solid #e4e9ee;
+      padding: 6px;
+    }
+
+    .table_header div:last-child,
+    .table_body div:last-child {
+      border-right: 0px solid #e4e9ee;
+    }
+
+    .table_body:last-child {
+      border-bottom: 0px;
+    }
+
+    .table_body {
+      border: 1px solid #e4e9ee;
+      color: #454545;
+    }
+
+    .table_body:nth-child(2n-1) {
+      background-color: #f5f6fa;
+    }
+
+    .action_box div {
+      border: 0px solid #e4e9ee;
+      padding: 0px;
+    }
+
+    .table_body:last-child {
+      border-bottom: 1px solid #e4e9ee;
+    }
+
+    .sub_header h4{
+      font-size: 14px;
+      padding: 4px;
+      margin: 0;
+      background-color: orange;
+      color: #fff;
+      min-width: 110px;
+      display: inline-block;
+      border-radius: 8px 8px 0px 0px;
+      text-align: center;
+    }
+
+    .text-center {
+      text-align: center;
+    }
+  </style>
+  <!-- Angular Material Library -->
+  <script src="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.js"></script>
+
+  <!-- Your application bootstrap  -->
+  <script type="text/javascript">
+    /**
+     * You must include the dependency on 'ngMaterial' 
+     */
+    angular.module('BlankApp', ['ngMaterial']);
+  </script>
+  <md-content class="md-padding">
+    <div layout="row">
+      <section class="ac-container">
+        <div class="contain_title">
+          <input id="ac-1" name="accordion-1" type="checkbox" />
+          <label for="ac-1">Mistkes_changes</label>
+          <article class="ac-large">
+            <div class="main_box">
+              <div class="left_title">
+                <h4 class="text_title">Fuzzi</h4>
+              </div>
+              <div class="right_body">
+                <div class="contain_box">
+
+                  <div layout="row" class="table_header">
+                    <div flex="5" class="text-center">
+                      id
+                    </div>
+                    <div flex="10" class="text-center">
+                      weight
+                    </div>
+                    <div flex="10" class="text-center">
+                      un scope
+                    </div>
+                    <div flex="10" class="text-center">
+                      Phases
+                    </div>
+                    <div flex="10" class="text-center">
+                      Critical
+                    </div>
+                    <div flex="10" class="text-center">
+                      Boosted
+                    </div>
+                    <div flex="10" class="text-center">
+                      unknow
+                    </div>
+                    <div flex="10" class="text-center">
+                      unknow
+                    </div>
+                    <div flex="10" class="text-center">
+                      Mnpx
+                    </div>
+                    <div flex="10" class="text-center">
+                      mnpx
+                    </div>
+                    <div flex="10" class="text-center">
+                      Action
+                    </div>
+                  </div>
+
+                  <div layout="row" class="table_body">
+                    <div flex="5" class="text-center">
+                      1
+                    </div>
+                    <div flex="10" class="text-center">
+                      5
+                    </div>
+                    <div flex="10" class="text-center">
+                      chat
+                    </div>
+                    <div flex="10" class="text-center">
+                      abc,abd ,dhd
+                    </div>
+                    <div flex="10" class="text-center">
+                      acd,ass,ssa
+                    </div>
+                    <div flex="10" class="text-center">
+                      xx,yy
+                    </div>
+                    <div flex="10" class="text-center">
+                      avd
+                    </div>
+                    <div flex="10" class="text-center">
+                      avd
+                    </div>
+                    <div flex="10" class="text-center">
+                      0
+                    </div>
+                    <div flex="10" class="text-center">
+                      999
+                    </div>
+                    <div flex="10" class="text-center action_box">
+                      <div layout="row">
+                        <div flex="50" class="text-center">
+                          <a href="#">edit</a>
+                        </div>
+                        <div flex="50" class="text-center">
+                          <a href="#"> delete</a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div layout="row" class="table_body">
+                    <div flex="5" class="text-center">
+                      2
+                    </div>
+                    <div flex="10" class="text-center">
+                      4
+                    </div>
+                    <div flex="10" class="text-center">
+                      chat
+                    </div>
+                    <div flex="10" class="text-center">
+                      abc,abd ,dhd
+                    </div>
+                    <div flex="10" class="text-center">
+                      acd,ass,ssa
+                    </div>
+                    <div flex="10" class="text-center">
+                      xx,yy
+                    </div>
+                    <div flex="10" class="text-center">
+                      avd
+                    </div>
+                    <div flex="10" class="text-center">
+                      avd
+                    </div>
+                    <div flex="10" class="text-center">
+                      0
+                    </div>
+                    <div flex="10" class="text-center">
+                      999
+                    </div>
+                    <div flex="10" class="text-center action_box">
+                      <div layout="row">
+                        <div flex="50" class="text-center">
+                          <a href="#">edit</a>
+                        </div>
+                        <div flex="50" class="text-center">
+                          <a href="#"> delete</a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div layout="row" class="table_body">
+                    <div flex="5" class="text-center">
+                      3
+                    </div>
+                    <div flex="10" class="text-center">
+                      3
+                    </div>
+                    <div flex="10" class="text-center">
+                      chat
+                    </div>
+                    <div flex="10" class="text-center">
+                      abc,abd ,dhd
+                    </div>
+                    <div flex="10" class="text-center">
+                      acd,ass,ssa
+                    </div>
+                    <div flex="10" class="text-center">
+                      xx,yy
+                    </div>
+                    <div flex="10" class="text-center">
+                      avd
+                    </div>
+                    <div flex="10" class="text-center">
+                      avd
+                    </div>
+                    <div flex="10" class="text-center">
+                      0
+                    </div>
+                    <div flex="10" class="text-center">
+                      999
+                    </div>
+                    <div flex="10" class="text-center action_box">
+                      <div layout="row">
+                        <div flex="50" class="text-center">
+                          <a href="#">edit</a>
+                        </div>
+                        <div flex="50" class="text-center">
+                          <a href="#"> delete</a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+
+                </div>
+              </div>
+            </div>
+
+
+            <div class="main_box">
+              <div class="left_title">
+                <h4 class="text_title">Word list</h4>
+              </div>
+              <div class="right_body">
+                <div class="contain_box">
+
+                  <div class="table_box">
+                    <div layout="row" class="table_header">
+                      <div flex="5" class="text-center">
+                        id
+                      </div>
+                      <div flex="10" class="text-center">
+                        weight
+                      </div>
+                      <div flex="10" class="text-center">
+                        un scope
+                      </div>
+                      <div flex="10" class="text-center">
+                        Phases
+                      </div>
+                      <div flex="10" class="text-center">
+                        Critical
+                      </div>
+                      <div flex="10" class="text-center">
+                        Boosted
+                      </div>
+                      <div flex="10" class="text-center">
+                        unknow
+                      </div>
+                      <div flex="10" class="text-center">
+                        unknow
+                      </div>
+                      <div flex="10" class="text-center">
+                        Mnpx
+                      </div>
+                      <div flex="10" class="text-center">
+                        mnpx
+                      </div>
+                      <div flex="10" class="text-center">
+                        Action
+                      </div>
+                    </div>
+
+                    <div layout="row" class="table_body">
+                      <div flex="5" class="text-center">
+                        1
+                      </div>
+                      <div flex="10" class="text-center">
+                        5
+                      </div>
+                      <div flex="10" class="text-center">
+                        chat
+                      </div>
+                      <div flex="10" class="text-center">
+                        abc,abd ,dhd
+                      </div>
+                      <div flex="10" class="text-center">
+                        acd,ass,ssa
+                      </div>
+                      <div flex="10" class="text-center">
+                        xx,yy
+                      </div>
+                      <div flex="10" class="text-center">
+                        avd
+                      </div>
+                      <div flex="10" class="text-center">
+                        avd
+                      </div>
+                      <div flex="10" class="text-center">
+                        0
+                      </div>
+                      <div flex="10" class="text-center">
+                        999
+                      </div>
+                      <div flex="10" class="text-center action_box">
+                        <div layout="row">
+                          <div flex="50" class="text-center">
+                            <a href="#">edit</a>
+                          </div>
+                          <div flex="50" class="text-center">
+                            <a href="#"> delete</a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="table_box">
+
+                    <div layout="row" class="table_header">
+                      <div flex="5" class="text-center">
+                        id
+                      </div>
+                      <div flex="10" class="text-center">
+                        weight
+                      </div>
+                      <div flex="10" class="text-center">
+                        un scope
+                      </div>
+                      <div flex="10" class="text-center">
+                        Phases
+                      </div>
+                      <div flex="10" class="text-center">
+                        Critical
+                      </div>
+                      <div flex="10" class="text-center">
+                        Boosted
+                      </div>
+                      <div flex="10" class="text-center">
+                        unknow
+                      </div>
+                      <div flex="10" class="text-center">
+                        unknow
+                      </div>
+                      <div flex="10" class="text-center">
+                        Mnpx
+                      </div>
+                      <div flex="10" class="text-center">
+                        mnpx
+                      </div>
+                      <div flex="10" class="text-center">
+                        Action
+                      </div>
+                    </div>
+
+                    <div layout="row" class="table_body">
+                      <div flex="5" class="text-center">
+                        1
+                      </div>
+                      <div flex="10" class="text-center">
+                        5
+                      </div>
+                      <div flex="10" class="text-center">
+                        chat
+                      </div>
+                      <div flex="10" class="text-center">
+                        abc,abd ,dhd
+                      </div>
+                      <div flex="10" class="text-center">
+                        acd,ass,ssa
+                      </div>
+                      <div flex="10" class="text-center">
+                        xx,yy
+                      </div>
+                      <div flex="10" class="text-center">
+                        avd
+                      </div>
+                      <div flex="10" class="text-center">
+                        avd
+                      </div>
+                      <div flex="10" class="text-center">
+                        0
+                      </div>
+                      <div flex="10" class="text-center">
+                        999
+                      </div>
+                      <div flex="10" class="text-center action_box">
+                        <div layout="row">
+                          <div flex="50" class="text-center">
+                            <a href="#">edit</a>
+                          </div>
+                          <div flex="50" class="text-center">
+                            <a href="#"> delete</a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+
+                </div>
+              </div>
+            </div>
+
+
+
+
+
+          </article>
+        </div>
+        <div class="contain_title">
+          <input id="ac-2" name="accordion-1" type="checkbox" checked/>
+          <label for="ac-2">Wordlist</label>
+          <article class="ac-medium">
+
+            <div class="main_box">
+              <div class="left_title">
+                <h4 class="text_title">Pair</h4>
+              </div>
+              <div class="right_body">
+                <div class="contain_box">
+
+                  <div class="table_box">
+                    <div layout="row" class="table_header">
+                      <div flex="5" class="text-center">
+                        id
+                      </div>
+                      <div flex="10" class="text-center">
+                        weight
+                      </div>
+                      <div flex="10" class="text-center">
+                        un scope
+                      </div>
+                      <div flex="10" class="text-center">
+                        Phases
+                      </div>
+                      <div flex="10" class="text-center">
+                        Critical
+                      </div>
+                      <div flex="10" class="text-center">
+                        Boosted
+                      </div>
+                      <div flex="10" class="text-center">
+                        unknow
+                      </div>
+                      <div flex="10" class="text-center">
+                        unknow
+                      </div>
+                      <div flex="10" class="text-center">
+                        Mnpx
+                      </div>
+                      <div flex="10" class="text-center">
+                        mnpx
+                      </div>
+                      <div flex="10" class="text-center">
+                        Action
+                      </div>
+                    </div>
+                    <div layout="row" class="table_body">
+                      <div flex="5" class="text-center">
+                        1
+                      </div>
+                      <div flex="10" class="text-center">
+                        5
+                      </div>
+                      <div flex="10" class="text-center">
+                        chat
+                      </div>
+                      <div flex="10" class="text-center">
+                        abc,abd ,dhd
+                      </div>
+                      <div flex="10" class="text-center">
+                        acd,ass,ssa
+                      </div>
+                      <div flex="10" class="text-center">
+                        xx,yy
+                      </div>
+                      <div flex="10" class="text-center">
+                        avd
+                      </div>
+                      <div flex="10" class="text-center">
+                        avd
+                      </div>
+                      <div flex="10" class="text-center">
+                        0
+                      </div>
+                      <div flex="10" class="text-center">
+                        999
+                      </div>
+                      <div flex="10" class="text-center action_box">
+                        <div layout="row">
+                          <div flex="50" class="text-center">
+                            <a href="#">edit</a>
+                          </div>
+                          <div flex="50" class="text-center">
+                            <a href="#"> delete</a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  </br>
+
+                  <div class="table_box">
+                    <div class="sub_header">
+                      <h4>opening</h4>
+                    </div>
+                    <div layout="row" class="table_header">
+                      <div flex="5" class="text-center">
+                        id
+                      </div>
+                      <div flex="10" class="text-center">
+                        weight
+                      </div>
+                      <div flex="10" class="text-center">
+                        un scope
+                      </div>
+                      <div flex="10" class="text-center">
+                        Phases
+                      </div>
+                      <div flex="10" class="text-center">
+                        Critical
+                      </div>
+                      <div flex="10" class="text-center">
+                        Boosted
+                      </div>
+                      <div flex="10" class="text-center">
+                        unknow
+                      </div>
+                      <div flex="10" class="text-center">
+                        unknow
+                      </div>
+                      <div flex="10" class="text-center">
+                        Mnpx
+                      </div>
+                      <div flex="10" class="text-center">
+                        mnpx
+                      </div>
+                      <div flex="10" class="text-center">
+                        Action
+                      </div>
+                    </div>
+                    <div layout="row" class="table_body">
+                      <div flex="5" class="text-center">
+                        1
+                      </div>
+                      <div flex="10" class="text-center">
+                        5
+                      </div>
+                      <div flex="10" class="text-center">
+                        chat
+                      </div>
+                      <div flex="10" class="text-center">
+                        abc,abd ,dhd
+                      </div>
+                      <div flex="10" class="text-center">
+                        acd,ass,ssa
+                      </div>
+                      <div flex="10" class="text-center">
+                        xx,yy
+                      </div>
+                      <div flex="10" class="text-center">
+                        avd
+                      </div>
+                      <div flex="10" class="text-center">
+                        avd
+                      </div>
+                      <div flex="10" class="text-center">
+                        0
+                      </div>
+                      <div flex="10" class="text-center">
+                        999
+                      </div>
+                      <div flex="10" class="text-center action_box">
+                        <div layout="row">
+                          <div flex="50" class="text-center">
+                            <a href="#">edit</a>
+                          </div>
+                          <div flex="50" class="text-center">
+                            <a href="#"> delete</a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="table_box">
+                    <div class="sub_header">
+                      <h4>closing</h4>
+                    </div>
+                    <div layout="row" class="table_header">
+                      <div flex="5" class="text-center">
+                        id
+                      </div>
+                      <div flex="10" class="text-center">
+                        weight
+                      </div>
+                      <div flex="10" class="text-center">
+                        un scope
+                      </div>
+                      <div flex="10" class="text-center">
+                        Phases
+                      </div>
+                      <div flex="10" class="text-center">
+                        Critical
+                      </div>
+                      <div flex="10" class="text-center">
+                        Boosted
+                      </div>
+                      <div flex="10" class="text-center">
+                        unknow
+                      </div>
+                      <div flex="10" class="text-center">
+                        unknow
+                      </div>
+                      <div flex="10" class="text-center">
+                        Mnpx
+                      </div>
+                      <div flex="10" class="text-center">
+                        mnpx
+                      </div>
+                      <div flex="10" class="text-center">
+                        Action
+                      </div>
+                    </div>
+                    <div layout="row" class="table_body">
+                      <div flex="5" class="text-center">
+                        1
+                      </div>
+                      <div flex="10" class="text-center">
+                        5
+                      </div>
+                      <div flex="10" class="text-center">
+                        chat
+                      </div>
+                      <div flex="10" class="text-center">
+                        abc,abd ,dhd
+                      </div>
+                      <div flex="10" class="text-center">
+                        acd,ass,ssa
+                      </div>
+                      <div flex="10" class="text-center">
+                        xx,yy
+                      </div>
+                      <div flex="10" class="text-center">
+                        avd
+                      </div>
+                      <div flex="10" class="text-center">
+                        avd
+                      </div>
+                      <div flex="10" class="text-center">
+                        0
+                      </div>
+                      <div flex="10" class="text-center">
+                        999
+                      </div>
+                      <div flex="10" class="text-center action_box">
+                        <div layout="row">
+                          <div flex="50" class="text-center">
+                            <a href="#">edit</a>
+                          </div>
+                          <div flex="50" class="text-center">
+                            <a href="#"> delete</a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="main_box">
+              <div class="left_title">
+                <h4 class="text_title">Wordlist</h4>
+              </div>
+              <div class="right_body">
+                <div class="contain_box">
+                  <p>Fuzzi list...</p>
+                </div>
+              </div>
+            </div>
+
+
+          </article>
+        </div>
+        <div>
+        </div>
+      </section>
+    </div>
+  </md-content>
+
+
+</body>
+
+</html>
