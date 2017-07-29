@@ -1,0 +1,137 @@
+<html lang="en">
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Angular Material style sheet -->
+  <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.css">
+</head>
+
+<body ng-app="BlankApp" ng-cloak>
+  <!--
+    Your HTML content here
+  -->
+
+  <!-- Angular Material requires Angular.js Libraries -->
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-animate.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-aria.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-messages.min.js"></script>
+  <style>
+    form {
+  background: #FFF;
+  box-shadow: 3px 3px 20px #bbb;
+  position: absolute;
+  width: 300px;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  font-family: Helvetica;
+  padding: 60px 30px;
+  text-align: center;
+}
+form h2 {
+  margin-bottom: 40px;
+  color: #34495e;
+}
+form label input {
+  display: block;
+  margin: 15px auto;
+}
+form input[type="text"], form input[type="password"] {
+  width: 80%;
+  border: none;
+  border-bottom: 1px solid #bbb;
+  color: #313131;
+  padding: 10px;
+  outline: 0;
+  -moz-outline-style: none;
+}
+form input[type="submit"] {
+  background: #02B875;
+  border: none;
+  border-radius: 999em;
+  line-height: 35px;
+  width: 45%;
+  margin: 25px auto;
+  color: #FFF;
+  font-size: 16px;
+  transition: background .6s ease;
+  outline: 0;
+  -moz-outline-style: none;
+}
+form input[type="submit"]:hover {
+  cursor: pointer;
+  background: #329f69;
+}
+form input[type="submit"]:active {
+  box-shadow: 1px 1px 7px #222;
+}
+form a {
+  font: 16px;
+  margin: 10px;
+  color: #bbb;
+  text-decoration: none;
+}
+form:after {
+  content: '';
+  position: absolute;
+  top: -1%;
+  left: 0;
+  right: 0;
+  background: -webkit-linear-gradient(left, #008744 0%, #008744 20%, #0057e7 20%, #0057e7 40%, #d62d20 40%, #d62d20 60%, #ffa700 60%, #ffa700 80%, #8e44ad 80%, #8e44ad 100%);
+  background: -moz-linear-gradient(left, #008744 0%, #008744 20%, #0057e7 20%, #0057e7 40%, #d62d20 40%, #d62d20 60%, #ffa700 60%, #ffa700 80%, #8e44ad 80%, #8e44ad 100%);
+  height: 5px;
+}
+
+@media screen and (max-width: 480px) {
+  form {
+    width: 100%;
+    height: 100%;
+    padding: 0;
+  }
+  form:after {
+    display: none;
+  }
+  form .wrap {
+    position: absolute;
+    width: 100%;
+    top: 50%;
+    transform: translate(0, -50%);
+  }
+}
+  </style>
+  <!-- Angular Material Library -->
+  <script src="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.js"></script>
+
+  <!-- Your application bootstrap  -->
+  <script type="text/javascript">
+    /**
+     * You must include the dependency on 'ngMaterial' 
+     */
+    angular.module('BlankApp', ['ngMaterial']);
+  </script>
+       
+	   
+	   <form action="" class="form_one">
+		  <div class="wrap">
+		  <h2>Login</h2>
+		  <label for="username">
+			<input type="text" id="username" placeholder="Username" required="true"/>
+		  </label>
+		  <label for="password">
+			<input type="password" id="password" placeholder="Password" required="true"/>
+		  </label>
+		  <label for="submit">
+			<input type="submit" value="Sign in"/>
+		  </label>
+		  <label for="forgot-password">
+			<a href="#">Forgot password?</a>
+			<a href="#">Register</a>
+		  </label>
+		 </div>
+		</form>
+
+
+</body>
+
+</html>
