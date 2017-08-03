@@ -1,135 +1,395 @@
 <html lang="en">
 
 <head>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <!-- Angular Material style sheet -->
-  <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.css">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!-- Angular Material style sheet -->
+	<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.css">
 </head>
 
 <body ng-app="BlankApp" ng-cloak>
-  <!--
+	<!--
     Your HTML content here
   -->
 
-  <!-- Angular Material requires Angular.js Libraries -->
-  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-animate.min.js"></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-aria.min.js"></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-messages.min.js"></script>
-  <style>
-    form {
-  background: #FFF;
-  box-shadow: 3px 3px 20px #bbb;
-  position: absolute;
-  width: 300px;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  font-family: Helvetica;
-  padding: 60px 30px;
-  text-align: center;
-}
-form h2 {
-  margin-bottom: 40px;
-  color: #34495e;
-}
-form label input {
-  display: block;
-  margin: 15px auto;
-}
-form input[type="text"], form input[type="password"] {
-  width: 80%;
-  border: none;
-  border-bottom: 1px solid #bbb;
-  color: #313131;
-  padding: 10px;
-  outline: 0;
-  -moz-outline-style: none;
-}
-form input[type="submit"] {
-  background: #02B875;
-  border: none;
-  border-radius: 999em;
-  line-height: 35px;
-  width: 45%;
-  margin: 25px auto;
-  color: #FFF;
-  font-size: 16px;
-  transition: background .6s ease;
-  outline: 0;
-  -moz-outline-style: none;
-}
-form input[type="submit"]:hover {
-  cursor: pointer;
-  background: #329f69;
-}
-form input[type="submit"]:active {
-  box-shadow: 1px 1px 7px #222;
-}
-form a {
-  font: 16px;
-  margin: 10px;
-  color: #bbb;
-  text-decoration: none;
-}
-form:after {
-  content: '';
-  position: absolute;
-  top: -1%;
-  left: 0;
-  right: 0;
-  background: -webkit-linear-gradient(left, #008744 0%, #008744 20%, #0057e7 20%, #0057e7 40%, #d62d20 40%, #d62d20 60%, #ffa700 60%, #ffa700 80%, #8e44ad 80%, #8e44ad 100%);
-  background: -moz-linear-gradient(left, #008744 0%, #008744 20%, #0057e7 20%, #0057e7 40%, #d62d20 40%, #d62d20 60%, #ffa700 60%, #ffa700 80%, #8e44ad 80%, #8e44ad 100%);
-  height: 5px;
-}
+	<!-- Angular Material requires Angular.js Libraries -->
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-animate.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-aria.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-messages.min.js"></script>
 
-@media screen and (max-width: 480px) {
-  form {
-    width: 100%;
-    height: 100%;
-    padding: 0;
-  }
-  form:after {
-    display: none;
-  }
-  form .wrap {
-    position: absolute;
-    width: 100%;
-    top: 50%;
-    transform: translate(0, -50%);
-  }
-}
-  </style>
-  <!-- Angular Material Library -->
-  <script src="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.js"></script>
 
-  <!-- Your application bootstrap  -->
-  <script type="text/javascript">
-    /**
+	<script src="https://codyhouse.co/demo/multi-level-accordion-menu/js/modernizr.js"></script>
+	<script src="https://codyhouse.co/demo/multi-level-accordion-menu/js/jquery-2.1.4.js"></script>
+	<style>
+		ol,
+		ul {
+			list-style: none;
+			padding: 0;
+		}
+
+
+		a {
+			color: #a0f6aa;
+			text-decoration: none;
+		}
+
+		h1 {
+			text-align: center;
+			width: 90%;
+			margin: 2em auto 0;
+			font-size: 2.4rem;
+			color: #507b55;
+			font-weight: bold;
+		}
+
+		@media only screen and (min-width: 600px) {
+			h1 {
+				font-size: 3.2rem;
+			}
+		}
+
+		input {
+			font-family: "Jaldi", sans-serif;
+			font-size: 1.6rem;
+		}
+
+		.cd-accordion-menu {
+			width: 90%;
+			max-width: 600px;
+			background: #4d5158;
+			margin: 4em auto;
+		}
+
+		.cd-accordion-menu ul {
+			/* by default hide all sub menus */
+			display: none;
+		}
+
+		.cd-accordion-menu li {
+			-webkit-user-select: none;
+			-moz-user-select: none;
+			-ms-user-select: none;
+			user-select: none;
+		}
+
+		.cd-accordion-menu input[type=checkbox] {
+			/* hide native checkbox */
+			position: absolute;
+			opacity: 0;
+		}
+
+		.cd-accordion-menu label,
+		.cd-accordion-menu a {
+			position: relative;
+			display: block;
+			padding: 18px 18px 18px 64px;
+			background: #4d5158;
+			box-shadow: inset 0 -1px #555960;
+			color: #ffffff;
+			font-size: 1.6rem;
+		}
+
+		.no-touch .cd-accordion-menu label:hover,
+		.no-touch .cd-accordion-menu a:hover {
+			background: #52565d;
+		}
+
+		.cd-accordion-menu label::before,
+		.cd-accordion-menu label::after,
+		.cd-accordion-menu a::after {
+			/* icons */
+			content: '';
+			display: inline-block;
+			width: 16px;
+			height: 16px;
+			position: absolute;
+			top: 50%;
+			-webkit-transform: translateY(-50%);
+			-moz-transform: translateY(-50%);
+			-ms-transform: translateY(-50%);
+			-o-transform: translateY(-50%);
+			transform: translateY(-50%);
+		}
+
+		.cd-accordion-menu label {
+			cursor: pointer;
+		}
+
+		.cd-accordion-menu label::before,
+		.cd-accordion-menu label::after {
+			background-image: url(cd-icons.svg);
+			background-repeat: no-repeat;
+		}
+
+		.cd-accordion-menu label::before {
+			/* arrow icon */
+			left: 18px;
+			background-position: 0 0;
+			-webkit-transform: translateY(-50%) rotate(-90deg);
+			-moz-transform: translateY(-50%) rotate(-90deg);
+			-ms-transform: translateY(-50%) rotate(-90deg);
+			-o-transform: translateY(-50%) rotate(-90deg);
+			transform: translateY(-50%) rotate(-90deg);
+		}
+
+		.cd-accordion-menu label::after {
+			/* folder icons */
+			left: 41px;
+			background-position: -16px 0;
+		}
+
+		.cd-accordion-menu a::after {
+			/* image icon */
+			left: 36px;
+			background: url(cd-icons.svg) no-repeat -48px 0;
+		}
+
+		.cd-accordion-menu input[type=checkbox]:checked+label::before {
+			/* rotate arrow */
+			-webkit-transform: translateY(-50%);
+			-moz-transform: translateY(-50%);
+			-ms-transform: translateY(-50%);
+			-o-transform: translateY(-50%);
+			transform: translateY(-50%);
+		}
+
+		.cd-accordion-menu input[type=checkbox]:checked+label::after {
+			/* show open folder icon if item is checked */
+			background-position: -32px 0;
+		}
+
+		.cd-accordion-menu input[type=checkbox]:checked+label+ul,
+		.cd-accordion-menu input[type=checkbox]:checked+label:nth-of-type(n)+ul {
+			/* use label:nth-of-type(n) to fix a bug on safari (<= 8.0.8) with multiple adjacent-sibling selectors*/
+			/* show children when item is checked */
+			display: block;
+		}
+
+		.cd-accordion-menu ul label,
+		.cd-accordion-menu ul a {
+			background: #35383d;
+			box-shadow: inset 0 -1px #41444a;
+			padding-left: 82px;
+		}
+
+		.no-touch .cd-accordion-menu ul label:hover,
+		.no-touch .cd-accordion-menu ul a:hover {
+			background: #3c3f45;
+		}
+
+		.cd-accordion-menu>li:last-of-type>label,
+		.cd-accordion-menu>li:last-of-type>a,
+		.cd-accordion-menu>li>ul>li:last-of-type label,
+		.cd-accordion-menu>li>ul>li:last-of-type a {
+			box-shadow: none;
+		}
+
+		.cd-accordion-menu ul label::before {
+			left: 36px;
+		}
+
+		.cd-accordion-menu ul label::after,
+		.cd-accordion-menu ul a::after {
+			left: 59px;
+		}
+
+		.cd-accordion-menu ul ul label,
+		.cd-accordion-menu ul ul a {
+			padding-left: 100px;
+		}
+
+		.cd-accordion-menu ul ul label::before {
+			left: 54px;
+		}
+
+		.cd-accordion-menu ul ul label::after,
+		.cd-accordion-menu ul ul a::after {
+			left: 77px;
+		}
+
+		.cd-accordion-menu ul ul ul label,
+		.cd-accordion-menu ul ul ul a {
+			padding-left: 118px;
+		}
+
+		.cd-accordion-menu ul ul ul label::before {
+			left: 72px;
+		}
+
+		.cd-accordion-menu ul ul ul label::after,
+		.cd-accordion-menu ul ul ul a::after {
+			left: 95px;
+		}
+
+		@media only screen and (min-width: 600px) {
+			.cd-accordion-menu label,
+			.cd-accordion-menu a {
+				padding: 24px 24px 24px 82px;
+				font-size: 0.9rem;
+			}
+			.cd-accordion-menu label::before {
+				left: 24px;
+			}
+			.cd-accordion-menu label::after {
+				left: 53px;
+			}
+			.cd-accordion-menu ul label,
+			.cd-accordion-menu ul a {
+				padding-left: 106px;
+			}
+			.cd-accordion-menu ul label::before {
+				left: 48px;
+			}
+			.cd-accordion-menu ul label::after,
+			.cd-accordion-menu ul a::after {
+				left: 77px;
+			}
+			.cd-accordion-menu ul ul label,
+			.cd-accordion-menu ul ul a {
+				padding-left: 130px;
+			}
+			.cd-accordion-menu ul ul label::before {
+				left: 72px;
+			}
+			.cd-accordion-menu ul ul label::after,
+			.cd-accordion-menu ul ul a::after {
+				left: 101px;
+			}
+			.cd-accordion-menu ul ul ul label,
+			.cd-accordion-menu ul ul ul a {
+				padding-left: 154px;
+			}
+			.cd-accordion-menu ul ul ul label::before {
+				left: 96px;
+			}
+			.cd-accordion-menu ul ul ul label::after,
+			.cd-accordion-menu ul ul ul a::after {
+				left: 125px;
+			}
+		}
+
+		.cd-accordion-menu.animated label::before {
+			/* this class is used if you're using jquery to animate the accordion */
+			-webkit-transition: -webkit-transform 0.3s;
+			-moz-transition: -moz-transform 0.3s;
+			transition: transform 0.3s;
+		}
+	</style>
+	<!-- Angular Material Library -->
+	<script src="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.js"></script>
+
+	<!-- Your application bootstrap  -->
+	<script type="text/javascript">
+		/**
      * You must include the dependency on 'ngMaterial' 
      */
-    angular.module('BlankApp', ['ngMaterial']);
-  </script>
-       
-	   
-	   <form action="" class="form_one">
-		  <div class="wrap">
-		  <h2>Login</h2>
-		  <label for="username">
-			<input type="text" id="username" placeholder="Username" required="true"/>
-		  </label>
-		  <label for="password">
-			<input type="password" id="password" placeholder="Password" required="true"/>
-		  </label>
-		  <label for="submit">
-			<input type="submit" value="Sign in"/>
-		  </label>
-		  <label for="forgot-password">
-			<a href="#">Forgot password?</a>
-			<a href="#">Register</a>
-		  </label>
-		 </div>
-		</form>
+		angular.module('BlankApp', ['ngMaterial']);
+		
+		jQuery(document).ready(function () {
+			var accordionsMenu = $('.cd-accordion-menu');
+
+			if (accordionsMenu.length > 0) {
+
+				accordionsMenu.each(function () {
+					var accordion = $(this);
+					//detect change in the input[type="checkbox"] value
+					accordion.on('change', 'input[type="checkbox"]', function () {
+						var checkbox = $(this);
+						console.log(checkbox.prop('checked'));
+						(checkbox.prop('checked')) ? checkbox.siblings('ul').attr('style', 'display:none;').slideDown(300) : checkbox.siblings('ul').attr('style', 'display:block;').slideUp(300);
+					});
+				});
+			}
+		});
+	</script>
+
+	<md-content layout-padding>
+		<div layout="row" layout-align="center center" layout-fill>
+			<div flex="60">
+				<ul class="cd-accordion-menu animated">
+					<li class="has-children">
+						<input type="checkbox" name="group-1" id="group-1" checked>
+						<label for="group-1">Group 1</label>
+
+						<ul>
+							<li class="has-children">
+								<input type="checkbox" name="sub-group-1" id="sub-group-1">
+								<label for="sub-group-1">Sub Group 1</label>
+
+								<ul>
+									<li><a href="#0">Image</a></li>
+									<li><a href="#0">Image</a></li>
+									<li><a href="#0">Image</a></li>
+								</ul>
+							</li>
+							<li class="has-children">
+								<input type="checkbox" name="sub-group-2" id="sub-group-2">
+								<label for="sub-group-2">Sub Group 2</label>
+
+								<ul>
+									<li class="has-children">
+										<input type="checkbox" name="sub-group-level-3" id="sub-group-level-3">
+										<label for="sub-group-level-3">Sub Group Level 3</label>
+
+										<ul>
+											<li><a href="#0">Image</a></li>
+											<li><a href="#0">Image</a></li>
+										</ul>
+									</li>
+									<li><a href="#0">Image</a></li>
+								</ul>
+							</li>
+							<li><a href="#0">Image</a></li>
+							<li><a href="#0">Image</a></li>
+						</ul>
+					</li>
+
+					<li class="has-children">
+						<input type="checkbox" name="group-2" id="group-2">
+						<label for="group-2">Group 2</label>
+
+						<ul>
+							<li><a href="#0">Image</a></li>
+							<li><a href="#0">Image</a></li>
+						</ul>
+					</li>
+
+					<li class="has-children">
+						<input type="checkbox" name="group-3" id="group-3">
+						<label for="group-3">Group 3</label>
+
+						<ul>
+							<li><a href="#0">Image</a></li>
+							<li><a href="#0">Image</a></li>
+						</ul>
+					</li>
+
+					<li class="has-children">
+						<input type="checkbox" name="group-4" id="group-4">
+						<label for="group-4">Group 4</label>
+
+						<ul>
+							<li class="has-children">
+								<input type="checkbox" name="sub-group-3" id="sub-group-3">
+								<label for="sub-group-3">Sub Group 3</label>
+
+								<ul>
+									<li><a href="#0">Image</a></li>
+									<li><a href="#0">Image</a></li>
+								</ul>
+							</li>
+							<li><a href="#0">Image</a></li>
+							<li><a href="#0">Image</a></li>
+						</ul>
+					</li>
+				</ul>
+				<!-- cd-accordion-menu -->
+			</div>
+			<div flex="40">
+
+			</div>
+		</div>
+	</md-content>
 
 
 </body>
