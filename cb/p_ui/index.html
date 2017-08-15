@@ -1,0 +1,247 @@
+<!doctype html>
+<html>
+
+<head>
+	<title>version 1.0.0</title>
+
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width">
+
+
+	<!-- all the important responsive layout stuff -->
+	<style>
+		.row .row {
+			margin: 0 -1.5em;
+		}
+
+		.col {
+			margin: 0 1.5em;
+		}
+
+		.row:after {
+			content: "";
+			clear: both;
+			display: table;
+		}
+
+		@media only screen {
+			.col {
+				float: left;
+				width: 100%;
+				box-sizing: border-box;
+			}
+		}
+
+		.container {
+			max-width: 90em;
+		}
+
+		@media only screen and (min-width: 34em) {
+			.feature,
+			.info {
+				width: 50%;
+			}
+		}
+
+		@media only screen and (min-width: 54em) {
+			.content {
+				width: 67.33%;
+				background-color: #eee;
+			}
+			.sidebar {
+				width: 25%;
+			}
+			.info {
+				width: 100%;
+			}
+		}
+
+		@media only screen and (min-width: 76em) {
+			.content {
+				width: 67.33%;
+				background-color: #eee;
+			}
+			.sidebar {
+				width: 25%;
+				background-color: #eee;
+			}
+			.info {
+				width: 50%;
+			}
+		}
+	</style>
+
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+</head>
+
+<body style="background-color: #eee;">
+
+	<div class="container">
+
+		<div class="row">
+
+			<div class="col sidebar">
+				<!--for profile	-->
+				<div class="overlay-container" style="position: relative;display: block;text-align: center;overflow: hidden;">
+					<img src="profile.png" alt="" style="position: relative;display: block;text-align: center;overflow: hidden;width:100%;">
+					<div class="overlay-to-top" style="font-style: normal;position: absolute;top: auto;padding: 10px;bottom: 0px;font-family: 'Open Sans', sans-serif;left: 0;right: 0px;background: linear-gradient(to bottom, rgba(0, 82, 153, 0.95), rgba(0, 189, 242, 0.91));opacity: 1;color: #ffffff;text-align: left;font-size: 14px;">
+						<p style="font-style: normal;margin: 0;padding: 0;"><em><span style="font-size: 18px;font-style: normal;">Aashish Chauhan</span> <br>
+						<span style="font-size: 14px;font-style: normal;">company Head</span><br>
+						<span style="font-style: normal;">
+						<img style="height:15px;font-size: 12.99px;font-style: normal;    vertical-align: bottom;" src="email.png"> <span style="font-style: normal;    font-size: 13px;">user@gmail.com  </span></em>
+						 <br><img style="height:15px;vertical-align: bottom;font-size: 12.99px;font-style: normal;" src="phone.png"><span style="font-style: normal;    font-size: 13px;"> 99789 98788 </span>
+						</span>
+						</p>
+						<a href="#"><img style="position: absolute;right: 20px;top: 37px;bottom: 0;/* left: 0; */" src="right-arrow.png"></a>
+					</div>
+				</div>
+				<!--for profile	-->
+
+				
+				<div style="display:inline-block;">
+				<!--for title box	-->
+				<div style="background: linear-gradient(to bottom, #00bdf2, #00bdf2);margin: 8px 0px;padding: 8px;color: #fff;line-height: 20px;vertical-align: middle;font-size: 15px;font-style: normal;font-family: sans-serif;text-transform: uppercase;position:relative;">company’s <a href="#" style="text-align: center; color: #fff;font-size: 11px;float: right;margin-right: 10%;text-decoration: none;">View More<img style="position: absolute;right: 4%;top: 6px;bottom: 0;height: 23px;vertical-align: middle;" src="right-arrow.png"></a></div>
+				<!--for title box	-->
+				
+					<!--for icon box	-->
+					<div style="width: 49%;font-family:sans-serif;display: inline-block;float:left;">
+						<div style="color: #ffffff;background-color: #f78b78;position: relative;margin-bottom: 10px;box-shadow: 0 1px 1px rgba(0,0,0,.05);">
+							<div style="float: left!important;width: 100%;">
+								<img src="users.png" style="width: 86px;">
+							</div>
+							<div style="padding: 15px;">
+								<div style="float: right!important;"><a href="#"><img src="right-arrow.png" style="height:21px;"></a></div>
+								<strong style="text-transform: uppercase;font-size: 13px;vertical-align: middle;line-height: 23px;">Team</strong>
+							</div>
+						</div>
+					</div>
+					
+					<div style="width: 49%;font-family:sans-serif;display: inline-block;float:right;">
+						<div style="color: #ffffff;background-color: #b881cc;position: relative;margin-bottom: 10px;box-shadow: 0 1px 1px rgba(0,0,0,.05);">
+							<div style="float: left!important;width: 100%;">
+								<img src="new_joiner.png" style="width: 86px;">
+							</div>
+							<div style="padding: 15px;">
+								<div style="float: right!important;"><a href="#"><img src="right-arrow.png" style="height:21px;"></a></div>
+								<strong style="text-transform: uppercase;font-size: 13px;vertical-align: middle;line-height: 23px;">New Joiner</strong>
+							</div>
+						</div>
+					</div>
+					
+					<div style="width: 49%;font-family:sans-serif;display: inline-block;float:left;">
+						<div style="color: #ffffff;background-color: #3ba3dd;position: relative;margin-bottom: 10px;box-shadow: 0 1px 1px rgba(0,0,0,.05);">
+							<div style="float: left!important;width: 100%;">
+								<img src="fun_event.png" style="width: 86px;">
+							</div>
+							<div style="padding: 15px;">
+								<div style="float: right!important;"><a href="#"><img src="right-arrow.png" style="height:21px;"></a></div>
+								<strong style="text-transform: uppercase;font-size: 13px;vertical-align: middle;line-height: 23px;">Fun Event</strong>
+							</div>
+						</div>
+					</div>
+					
+					<div style="width: 49%;font-family:sans-serif;display: inline-block;float:right;">
+						<div style="color: #ffffff;background-color: #f7931d;position: relative;margin-bottom: 10px;box-shadow: 0 1px 1px rgba(0,0,0,.05);">
+							<div style="float: left!important;width: 100%;">
+								<img src="r_r.png" style="width: 86px;">
+							</div>
+							<div style="padding: 15px;">
+								<div style="float: right!important;"><a href="#"><img src="right-arrow.png" style="height:21px;"></a></div>
+								<strong style="text-transform: uppercase;font-size: 13px;vertical-align: middle;line-height: 23px;">R&R </strong>
+							</div>
+						</div>
+					</div>
+					
+					<div style="width: 49%;font-family:sans-serif;display: inline-block;float:left;">
+						<div style="color: #ffffff;background-color: #c9de75;position: relative;margin-bottom: 10px;box-shadow: 0 1px 1px rgba(0,0,0,.05);">
+							<div style="float: left!important;width: 100%;">
+								<img src="some_data.png" style="width: 86px;">
+							</div>
+							<div style="padding: 15px;">
+								<div style="float: right!important;"><a href="#"><img src="right-arrow.png" style="height:21px;"></a></div>
+								<strong style="text-transform: uppercase;font-size: 13px;vertical-align: middle;line-height: 23px;">NA</strong>
+							</div>
+						</div>
+					</div>
+					
+					<div style="width: 49%;font-family:sans-serif;display: inline-block;float:right;">
+						<div style="color: #ffffff;background-color: #68d3ff;position: relative;margin-bottom: 10px;box-shadow: 0 1px 1px rgba(0,0,0,.05);">
+							<div style="float: left!important;width: 100%;">
+								<img src="gallery.png" style="width: 86px;">
+							</div>
+							<div style="padding: 15px;">
+								<div style="float: right!important;"><a href="#"><img src="right-arrow.png" style="height:21px;"></a></div>
+								<strong style="text-transform: uppercase;font-size: 13px;vertical-align: middle;line-height: 23px;">Photos</strong>
+							</div>
+						</div>
+					</div>
+					
+				</div>
+				<!--for icon box	-->
+			
+			<!--for title box	-->
+				<div style="background: linear-gradient(to bottom, #00bdf2, #00bdf2);margin: 0px 0px;padding: 8px;color: #fff;line-height: 20px;vertical-align: middle;font-size: 15px;font-style: normal;font-family: sans-serif;text-transform: uppercase;position:relative;">What’s New <a href="#" style="text-align: center; color: #fff;font-size: 11px;float: right;margin-right: 10%;text-decoration: none;">View More<img style="position: absolute;right: 4%;top: 6px;bottom: 0;height: 23px;vertical-align: middle;" src="right-arrow.png"></a></div>
+				<div style="padding: 5px;border-bottom: 1px solid #eee;background-color: #fff;height: 300px;">
+					<div style="padding: 5px;height: 81px;border: 1px solid #eee;overflow: hidden;margin: 5px 0px;">
+						<img src="news_img.png" style="width: 30%;float: left;">
+						<div style="float: right;width: 68%;vertical-align: middle;color:#028ae2;font-size: 16px;font-family: sans-serif;height: 84px;">
+							<a href="#" style="color:#028ae2;font-size: 16px;font-family: sans-serif;text-decoration:none;">A Focused Franchise with Business Momentum ...</a>
+							<div style="color: #ddd;font-size: 14px;vertical-align: bottom;">3 minutes ago</div>
+						</div>
+					</div>
+					
+					<div style="padding: 5px;height: 81px;border: 1px solid #eee;overflow: hidden;margin: 5px 0px;">
+						<img src="news_img.png" style="width: 30%;float: left;">
+						<div style="float: right;width: 68%;vertical-align: middle;height: 84px;">
+							<a href="#" style="color:#028ae2;font-size: 16px;font-family: sans-serif;text-decoration:none;">A Focused Franchise with Business Momentum ...</a>
+							<div style="color: #ddd;font-size: 14px;vertical-align: bottom;">3 minutes ago</div>
+						</div>
+					</div>
+					
+					<div style="padding: 5px;height: 81px;border: 1px solid #eee;overflow: hidden;margin: 5px 0px;">
+						<img src="news_img.png" style="width: 30%;float: left;">
+						<div style="float: right;width: 68%;vertical-align: middle;color:#028ae2;font-size: 16px;font-family: sans-serif;height: 84px;">
+							<a href="#" style="color:#028ae2;font-size: 16px;font-family: sans-serif;text-decoration:none;">A Focused Franchise with Business Momentum ...</a>
+							<div style="color: #ddd;font-size: 14px;vertical-align: bottom;">3 minutes ago</div>
+						</div>
+					</div>
+					
+					
+				</div>
+				<!--for title box	-->
+				
+				<!-- end of whats new -->	
+				
+				<div style="background: linear-gradient(to bottom, #00bdf2, #00bdf2);margin: 10px 0px 0px;padding: 8px;color: #fff;line-height: 20px;vertical-align: middle;font-size: 15px;font-style: normal;font-family: sans-serif;text-transform: uppercase;position:relative;">Clean Poll <a href="#" style="text-align: center; color: #fff;font-size: 11px;float: right;margin-right: 10%;text-decoration: none;">View More<img style="position: absolute;right: 4%;top: 6px;bottom: 0;height: 23px;vertical-align: middle;" src="right-arrow.png"></a></div>
+				<div style="">
+				<div class="overlay-container" style="position: relative;display: block;text-align: center;overflow: hidden;">
+					<img src="poll.png" alt="" style="position: relative;display: block;text-align: center;overflow: hidden;width:100%;">
+					<div class="overlay-to-top" style="font-style: normal;position: absolute;top: auto;padding: 10px;bottom: 0px;font-family: 'Open Sans', sans-serif;left: 0;right: 0px;background: linear-gradient(to bottom, rgba(0, 82, 153, 0.95), rgba(0, 189, 242, 0.91));opacity: 1;color: #ffffff;text-align: left;font-size: 14px;">
+						<p style="font-style: normal;margin: 0;padding: 0;text-align:center;"><em><span style="font-size: 18px;font-style: normal;">If company  had a movie theme, what would it be?</span>
+						</p>
+						<div style="text-align:center;">
+							<button style="background-color: transparent;border: 1px solid #eee;color: white;padding: 9px 22px;
+							text-align: center;text-decoration: none;display: inline-block;font-size: 14px;margin: 7px 3px;cursor: pointer;border-radius: 25px;outline: none;">Bahubali</button>
+							<button style="background-color: transparent;border: 1px solid #eee;color: white;padding: 9px 22px;
+							text-align: center;text-decoration: none;display: inline-block;font-size: 14px;margin: 7px 3px;cursor: pointer;border-radius: 25px;outline: none;">Dabangg</button>
+						</div>
+					</div>
+				</div>
+				
+				</div>
+				
+			</div>
+			<!-- for the whats new	 -->
+				
+				
+
+			<div class="col content">
+				hello
+			</div>
+
+		</div>
+	</div>
+
+</body>
+
+</html>
