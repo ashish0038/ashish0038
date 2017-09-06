@@ -2,14 +2,19 @@ body{
 	background-color:#eee;
 	font-family: 'Open Sans','Baloo Bhaijaan', sans-serif;
 	font-weight:100;
+	overflow:hidden;
+}
+html, 
+body {
+    height: 100vh;
 }
 
-
 #top-content {
-    padding-top: 25px;
     background-image: url(../images/top-bg.png);
+	height:calc(100vh - 141px);
+	background-position: center;
     background-repeat: no-repeat;
-	background-position: -69px -20px;
+    background-size: cover;
 }
 
 .text-center {
@@ -103,13 +108,13 @@ body{
 	float: left;
 }
 #page-content {
-    margin-top: -100px;
+    margin-top:0px;
 }
 
 .panel {
     border: none;
     border-radius: 0px;
-    margin: 10px;
+    margin: 0px;
     -webkit-box-shadow: 0px 1px 2px 0px rgba(0,0,0,0.1);
     -moz-box-shadow: 0px 1px 2px 0px rgba(0,0,0,0.1);
     box-shadow: 0px 1px 2px 0px rgba(0,0,0,0.1);
