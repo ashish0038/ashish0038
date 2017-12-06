@@ -1,0 +1,487 @@
+<!doctype html>
+<html>
+
+<head>
+  <title>version 1.0.0</title>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Open Sans', sans-serif;
+    }
+
+    .main-search-container {
+      background-image: url('bg.jpg');
+      display: block;
+      width: 100%;
+      position: relative;
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: 50%;
+      height: 760px;
+      z-index: 9;
+    }
+
+    .main-search-container:before {
+      content: "";
+      position: absolute;
+      height: 100%;
+      width: 100%;
+      display: block;
+      background: linear-gradient(to right, rgba(0, 82, 153, 0.95) 20%, rgba(0, 189, 242, 0.91) 70%, rgba(255, 255, 255, 0) 95%);
+    }
+
+    .slick-slide {
+      display: inline-block;
+      height: 100%;
+      min-height: 1px;
+      padding: 10px 15px;
+      outline: none;
+      width: 25%;
+      text-align: left;
+    }
+
+    .listing-item-container {
+      background-color: #f6f6f6;
+      display: block;
+      height: 100%;
+      width: 100%;
+      border-radius: 4px;
+      transform: translate3d(0, 0, 0);
+      transition: transform 0.3s;
+      margin-bottom: 30px;
+      box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.08);
+      background-color: #fff;
+      background: #fff;
+    }
+
+    .listing-item {
+      background: #ccc;
+      border-radius: 4px 4px 0 0;
+      height: 100%;
+      display: block;
+      position: relative;
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: 50%;
+      height: 265px;
+      z-index: 100;
+      cursor: pointer;
+      overflow: hidden;
+    }
+
+    .listing-item img {
+      object-fit: cover;
+      height: 100%;
+      width: 100%;
+      border-radius: 4px 4px 0 0;
+    }
+
+    .listing-item-content {
+      position: absolute;
+      bottom: 28px;
+      left: 0;
+      padding: 0 32px;
+      padding-right: 90px;
+      width: 100%;
+      z-index: 50;
+      box-sizing: border-box;
+    }
+
+
+    .listing-item-content span.tag {
+      text-transform: uppercase;
+      font-size: 9px;
+      letter-spacing: 2.5px;
+      font-weight: 60;
+      background: rgba(255, 255, 255, 0.3);
+      border-radius: 50px;
+      padding: 4px 16px;
+      line-height: 20px;
+      color: #fff;
+      font-weight: 400;
+      margin-bottom: 9px;
+    }
+
+    .listing-item-content h3 {
+      color: #fff;
+      font-size: 20px;
+      bottom: -1px;
+      position: relative;
+      font-weight: 500;
+      margin: 0;
+      line-height: 31px;
+    }
+
+    .listing-item-content span {
+      font-size: 16px;
+      font-weight: 300;
+      display: inline-block;
+      color: rgba(255, 255, 255, 0.7);
+    }
+
+    span.like-icon {
+      color: #fff;
+      font-size: 19px;
+      position: absolute;
+      z-index: 101;
+      right: 30px;
+      bottom: 30px;
+      cursor: normal;
+      background-color: rgba(24, 24, 24, 0.4);
+      display: block;
+      height: 44px;
+      width: 44px;
+      border-radius: 50%;
+      transition: all 0.4s;
+    }
+
+    .like-icon:before,
+    .like-icon:after {
+      transition: opacity 0.3s, transform 0.4s cubic-bezier(.0, -.41, .19, 2.5);
+      font-family: "FontAwesome";
+      position: absolute;
+      right: 0;
+      left: 0;
+      text-align: center;
+      top: 9px;
+    }
+
+    .listing-item:before {
+      content: "";
+      top: 0;
+      position: absolute;
+      height: 100%;
+      width: 100%;
+      z-index: 9;
+      background: linear-gradient(to top, rgba(35, 35, 37, 0.9) 0%, rgba(35, 35, 37, 0.45) 35%, rgba(22, 22, 23, 0) 60%, rgba(0, 0, 0, 0) 100%);
+      background-color: rgba(35, 35, 37, 0.2);
+      border-radius: 4px 4px 0 0;
+      opacity: 1;
+    }
+
+    span.like-icon {
+      color: #fff;
+      font-size: 19px;
+      position: absolute;
+      z-index: 101;
+      right: 30px;
+      bottom: 30px;
+      cursor: normal;
+      background-color: rgba(24, 24, 24, 0.4);
+      display: block;
+      height: 44px;
+      width: 44px;
+      border-radius: 50%;
+      transition: all 0.4s;
+      background-image: url(right-arrow.png);
+      background-repeat: no-repeat;
+      background-position: center;
+    }
+
+    .like-icon:hover,
+    .like-icon.liked {
+      background-color: #00bdf2;
+    }
+
+    .listing-item-details {
+      position: absolute;
+      top: 24px;
+      left: 0;
+      padding: 0 32px;
+      width: 100%;
+      z-index: 50;
+      color: #fff;
+      box-sizing: border-box;
+      font-weight: 500;
+      font-size: 15px;
+    }
+
+    .listing-item-details ul {
+      margin: 0;
+      list-style: none;
+      padding: 0;
+    }
+
+    .listing-item-details ul li {
+      display: inline-block;
+      margin-right: 6px;
+      line-height: 20px;
+    }
+
+    .listing-badge.now-open {
+      background-color: #54ba1d;
+    }
+
+    .listing-badge {
+      background-color: #333;
+      float: left;
+      position: absolute;
+      transform: rotate(45deg);
+      right: -64px;
+      top: 22px;
+      text-align: center;
+      width: 200px;
+      font-size: 12.5px;
+      margin: 0;
+      z-index: 999;
+      color: #fff;
+      font-weight: 500;
+      line-height: 28px;
+    }
+
+    .main-search-inner {
+      text-align: center;
+      position: absolute;
+      width: 100%;
+      bottom: 0;
+    }
+
+    .headline {
+      font-size: 30px;
+      line-height: 37px;
+      margin: 0px 0px 30px;
+      text-align: center;
+      color: #fff;
+      font-weight: lighter;
+    }
+
+    .categories-boxes-container {
+      width: 100%;
+      margin-bottom: 30px;
+      margin-top: 5px;
+    }
+
+    .category-small-box {
+      display: inline-block;
+      background-color: transparent;
+      text-align: center;
+      transform: scale(1);
+      border-radius: 4px;
+      margin: 0px 0px 0px 0px;
+      padding: 0px 15px;
+      transition: 0.4s;
+      text-decoration: none;
+      border: 1px solid #fff;
+    }
+
+    .category-small-box i {
+      font-size: 42px;
+      height: 40px;
+      display: inline-block;
+      margin-top: 20px;
+    }
+
+    .category-small-box h4 {
+      font-size: 16px;
+      color:#fff;
+      line-height: 22px;
+      margin-top: 8px;
+      transition: 0.4s;
+      text-decoration: none;
+    }
+
+    .category-small-box:hover {
+      background:rgba(0, 0, 0, 0.25);
+      color: #fff;
+      transform: scale(1.06);
+    }
+
+    .category-small-box:hover h4 {
+      color: #fff;
+    }
+
+    .category-small-box {
+      width: 10%;
+    }
+
+    .icon_img{
+      height:100px;
+    }
+  </style>
+
+
+</head>
+
+<body style="background-color: #eee;">
+
+  <div class="main-search-container">
+    <div class="main-search-inner">
+
+      <!-- top contain -->
+
+      <h3 class="headline">
+        We are compliance , we offers
+      </h3>
+
+      <!--<div class="categories-boxes-container margin-top-5 margin-bottom-30">
+
+        <a href="#" class="category-small-box">
+          <img class="icon_img" src="team.png">
+					<h4>TEAM</h4>
+				</a>
+
+        <a href="#" class="category-small-box">
+					<img class="icon_img" src="joiner.png"></i>
+					<h4>NEW JOINER</h4>
+				</a>
+
+        <a href="#" class="category-small-box">
+					<img class="icon_img" src="fun_event.png"></i>
+					<h4>FUN EVENT</h4>
+				</a>
+
+        <a href="#" class="category-small-box">
+					<img class="icon_img" src="r_r.png"></i>
+					<h4>R&R</h4>
+				</a>
+
+        <a href="#" class="category-small-box">
+					<img class="icon_img" src="joiner.png"></i>
+					<h4>NA</h4>
+				</a>
+
+        <a href="#" class="category-small-box">
+					<img class="icon_img" src="photo.png"></i>
+					<h4>PHOTOS</h4>
+				</a>
+
+      </div>-->
+
+      <!-- end of top contain -->
+
+      <div class="slick-slide">
+        <a href="#" class="listing-item-container" tabindex="0">
+          <div class="listing-item">
+            <img src="team.png" alt="">
+            <div class="listing-item-details">
+              <ul>
+                <li>Friday, August 10</li>
+              </ul>
+            </div>
+
+            <div class="listing-item-content">
+              <span class="tag">TEAM</span>
+              <h3>OUR TEAM</h3>
+              <span>Together every team achives more !</span>
+            </div>
+            <span class="like-icon"></span>
+          </div>
+        </a>
+      </div>
+
+      <div class="slick-slide">
+        <a href="#" class="listing-item-container" tabindex="0">
+          <div class="listing-item">
+            <img src="nj.png" alt="">
+            <div class="listing-item-details">
+              <ul>
+                <li>Friday, August 10</li>
+              </ul>
+            </div>
+            <div class="listing-badge now-open">New joiner</div>
+
+            <div class="listing-item-content">
+              <span class="tag">Joiner</span>
+              <h3>NEW JOINER</h3>
+              <span>We are welcome you!</span>
+            </div>
+            <span class="like-icon"></span>
+          </div>
+        </a>
+      </div>
+
+
+      <div class="slick-slide">
+        <a href="#" class="listing-item-container" tabindex="0">
+          <div class="listing-item">
+            <img src="listing-item-01_tmb.jpg" alt="">
+            <div class="listing-item-details">
+              <ul>
+                <li>Friday, August 10</li>
+              </ul>
+            </div>
+
+            <div class="listing-item-content">
+              <span class="tag">Eat &amp; Drink &amp; Enjoy</span>
+              <h3>FUN EVENT</h3>
+              <span>964 School Street, New York</span>
+            </div>
+            <span class="like-icon"></span>
+          </div>
+        </a>
+      </div>
+
+
+      <div class="slick-slide">
+        <a href="#" class="listing-item-container" tabindex="0">
+          <div class="listing-item">
+            <img src="listing-item-01_tmb.jpg" alt="">
+            <div class="listing-item-details">
+              <ul>
+                <li>Friday, August 10</li>
+              </ul>
+            </div>
+
+            <div class="listing-item-content">
+              <span class="tag">Eat &amp; Drink</span>
+              <h3>Tom's Restaurant</h3>
+              <span>964 School Street, New York</span>
+            </div>
+            <span class="like-icon"></span>
+          </div>
+        </a>
+      </div>
+
+      <div class="slick-slide">
+        <a href="#" class="listing-item-container" tabindex="0">
+          <div class="listing-item">
+            <img src="listing-item-01_tmb.jpg" alt="">
+            <div class="listing-item-details">
+              <ul>
+                <li>Friday, August 10</li>
+              </ul>
+            </div>
+
+            <div class="listing-item-content">
+              <span class="tag">Eat &amp; Drink</span>
+              <h3>Tom's Restaurant</h3>
+              <span>964 School Street, New York</span>
+            </div>
+            <span class="like-icon"></span>
+          </div>
+        </a>
+      </div>
+
+
+      <div class="slick-slide">
+        <a href="#" class="listing-item-container" tabindex="0">
+          <div class="listing-item">
+            <img src="listing-item-01_tmb.jpg" alt="">
+            <div class="listing-item-details">
+              <ul>
+                <li>Friday, August 10</li>
+              </ul>
+            </div>
+
+            <div class="listing-item-content">
+              <span class="tag">Eat &amp; Drink</span>
+              <h3>Tom's Restaurant</h3>
+              <span>964 School Street, New York</span>
+            </div>
+            <span class="like-icon"></span>
+          </div>
+        </a>
+      </div>
+
+    </div>
+  </div>
+
+
+
+
+</body>
+
+</html>
